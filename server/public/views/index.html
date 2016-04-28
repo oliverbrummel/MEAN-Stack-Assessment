@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app = "heroApp">
+  <head>
+    <meta charset="utf-8">
+    <title>MEAN Stack Assessment</title>
+    <script src = "vendors/angular/angular.min.js"></script>
+    <script src = "assets/scripts/client.min.js"></script>
+    <link rel = "stylesheet" href = "vendors/bootstrap/dist/css/bootstrap.min.css" />
+
+  </head>
+  <body class = "container" ng-controller = "MainController as controller">
+    <div class = "jumbotron">
+      <h1>Superhero Tracker</h1>
+    </div>
+    <div class = "well">
+      <ul style = "list-style-type: none">
+        <li>
+          Alias: <input type = "text" ng-model = "controller.heroData.alias" />
+        </li>
+        <li>
+          First Name: <input type = "text" ng-model = "controller.heroData.first_name" />
+        </li>
+        <li>
+          Last Name:<input type = "text" ng-model = "controller.heroData.last_name" />
+        </li>
+        <li>
+          City: <input type = "text" ng-model = "controller.heroData.city" />
+        </li>
+        <li>
+          <!-- Power Name: <select ng-model = "controller.heroData.power_name" ng-options = "controller.powers for value in controller.powers"></select> -->
+
+          Power Name:<br />
+          Invisibility<input type = "radio" ng-model = "controller.heroData.power_name" value = "Invisivility" /><br />
+          Flight<input type = "radio" ng-model = "controller.heroData.power_name" value = "Flight" /><br />
+          Super Speed<input type = "radio" ng-model = "controller.heroData.power_name" value = "Super Speed" /><br />
+          Heat Vision<input type = "radio" ng-model = "controller.heroData.power_name" value = "Heat Vision" /><br />
+          Super Strength<input type = "radio" ng-model = "controller.heroData.power_name" value = "Super Strength" /><br />
+          Accelerated Healing<input type = "radio" ng-model = "controller.heroData.power_name" value = "Accelerated Healing" /><br />
+          Power Blast<input type = "radio" ng-model = "controller.heroData.power_name" value = "Power Blast" /><br />
+          Animal Affinity<input type = "radio" ng-model = "controller.heroData.power_name" value = "Animal Affinity" /><br />
+
+        </li>
+
+
+
+      </ul>
+      <button class = "btn btn-md btn-primary" ng-click = "controller.sendHeroData()">Submit Hero</button>
+
+    </div>
+
+    <div class = "well" ng-repeat = "item in controller.allHeroes">
+      <ul>
+        <li>
+          Alias: {{item.alias}}
+        </li>
+        <li>
+          Name: {{item.first_name}} {{item.last_name}}
+        </li>
+        <li>
+          City: {{item.city}}
+        </li>
+        <li>
+          Superpower: {{item.power_name}}
+        </li>
+
+      </ul>
+      <button class = "btn btn-sm btn-danger" ng-click = "controller.deleteHero(item)">Delete Hero</button>
+    </div>
+  </body>
+</html>
